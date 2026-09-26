@@ -32,7 +32,7 @@ export default function KitapKarti({ kitap }: KitapKartiProps) {
       </h3>
       <p className="text-sm text-gray-600">Yazar: {kitap.yazar}</p>
       <p className="text-sm text-gray-500">{kitap.sayfaSayisi} sayfa</p>
-      <OduncKontrol baslangicDurumu={kitap.durum} />
+      <OduncKontrol kitapId={kitap.id} durum={kitap.durum} />
       <FavoriButonu kitapAdi={kitap.baslik} />
     </div>
   );

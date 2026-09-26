@@ -2,7 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { oneriEkle, kitapOlustur, kitabiGuncelle, kitabiSil } from "@/lib/veri";
+import { oneriEkle, kitapOlustur, kitabiGuncelle, kitabiSil, durumuDegistir } from "@/lib/veri";
+import { Durum } from "@/data/kitaplar";
 import { kitapFormunuDogrula, KitapFormDurumu } from "@/lib/dogrulama";
 
 export const oneriGonder = async (formData: FormData) => {
@@ -59,4 +60,17 @@ export const kitapSil = async (id: number) => {
   revalidatePath("/");
   revalidatePath("/kategoriler");
   redirect("/kitaplar");
+};
+
+export const oduncDurumunuDegistir = async (id: number, yeniDurum: Durum) => {
+  if (yeniDurum !== "rafta" && yeniDurum !== "oduncte") {
+    return;
+  }
+
+  await durumuDegistir(id, yeniDurum);
+
+  revalidatePath("/kitaplar");
+  revalidatePath(`/kitaplar/${id}`);
+  revalidatePath("/");
+  revalidatePath("/kategoriler");
 };

@@ -79,7 +79,7 @@ export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
           </ul>
 
           <div className="mt-6 max-w-xs">
-            <OduncKontrol baslangicDurumu={kitap.durum} />
+            <OduncKontrol kitapId={kitap.id} durum={kitap.durum} />
             <FavoriButonu kitapAdi={kitap.baslik} />
           </div>
         </div>

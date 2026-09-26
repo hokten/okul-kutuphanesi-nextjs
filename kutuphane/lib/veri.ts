@@ -54,6 +54,13 @@ export const kitabiSil = async (id: number) => {
   });
 };
 
+export const durumuDegistir = async (id: number, durum: Durum) => {
+  await prisma.kitap.updateMany({
+    where: { id },
+    data: { durum },
+  });
+};
+
 export const kategorileriGetir = async () => {
   const kategoriler = await prisma.kategori.findMany({
     orderBy: { ad: "asc" },

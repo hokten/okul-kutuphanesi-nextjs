@@ -1,29 +1,25 @@
-"use client";
-
-import { useState } from "react";
 import { Durum } from "@/data/kitaplar";
 import DurumRozeti from "@/components/DurumRozeti";
+import { oduncDurumunuDegistir } from "@/lib/eylemler";
 
 interface OduncKontrolProps {
-  baslangicDurumu: Durum;
+  kitapId: number;
+  durum: Durum;
 }
 
-export default function OduncKontrol({ baslangicDurumu }: OduncKontrolProps) {
-  const [durum, setDurum] = useState<Durum>(baslangicDurumu);
-
-  const degistir = () => {
-    setDurum(durum === "rafta" ? "oduncte" : "rafta");
-  };
+export default function OduncKontrol({ kitapId, durum }: OduncKontrolProps) {
+  const yeniDurum: Durum = durum === "rafta" ? "oduncte" : "rafta";
+  const degistir = oduncDurumunuDegistir.bind(null, kitapId, yeniDurum);
 
   return (
-    <div className="mt-3 flex items-center justify-between">
+    <form action={degistir} className="mt-3 flex items-center justify-between">
       <DurumRozeti durum={durum} />
       <button
-        onClick={degistir}
-        className="ml-2 px-3 py-1 rounded bg-blue-600 text-white text-sm hover:bg-blue-700"
+        type="submit"
+        className="px-3 py-1 rounded bg-blue-600 text-white text-sm hover:bg-blue-700"
       >
         {durum === "rafta" ? "Ödünç ver" : "İade al"}
       </button>
-    </div>
+    </form>
   );
 }
