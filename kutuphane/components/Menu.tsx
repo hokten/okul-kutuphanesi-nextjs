@@ -6,6 +6,7 @@ export default function Menu() {
       <Link href="/" className="hover:underline">Anasayfa</Link>
       <Link href="/kitaplar" className="hover:underline">Kitaplar</Link>
       <Link href="/hakkimizda" className="hover:underline">Hakkımızda</Link>
+      <Link href="/iletisim" className="hover:underline">İletişim</Link>
     </nav>
   );
 }

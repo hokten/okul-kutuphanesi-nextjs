@@ -17,7 +17,11 @@ export default function Anasayfa() {
         raftaSayisi={raftakiler.length}
       />
       <OneCikanKitaplar kitaplar={oneCikanlar} />
-      <p><Link href="/kitaplar">Bütün kitapları gör →</Link></p>
+      <p>
+        <Link href="/kitaplar" className="text-blue-700 hover:underline">
+          Bütün kitapları gör →
+        </Link>
+      </p>
       <Istatistikler kitaplar={kitaplar} />
       <OkumaSayaci />
     </main>

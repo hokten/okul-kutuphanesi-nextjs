@@ -1,5 +1,6 @@
 import { Kitap } from "@/data/kitaplar";
 import KitapListesi from "@/components/KitapListesi";
+import Bolum from "@/components/Bolum";
 
 interface OneCikanKitaplarProps {
   kitaplar: Kitap[];
@@ -7,10 +8,9 @@ interface OneCikanKitaplarProps {
 
 export default function OneCikanKitaplar({ kitaplar }: OneCikanKitaplarProps) {
   return (
-    <section>
-      <h2>Öne Çıkan Kitaplar</h2>
-      <p>Kütüphanecimizin bu ay önerdiği kitaplar:</p>
+    <Bolum baslik="Öne Çıkan Kitaplar">
+      <p className="mb-4 text-gray-600">Kütüphanecimizin bu ay önerdiği kitaplar:</p>
       <KitapListesi kitaplar={kitaplar} />
-    </section>
+    </Bolum>
   );
 }

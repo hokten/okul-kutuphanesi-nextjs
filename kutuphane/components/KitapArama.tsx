@@ -21,14 +21,22 @@ export default function KitapArama({ kitaplar }: KitapAramaProps) {
 
   return (
     <section>
-      <input
-        type="text"
-        placeholder="Kitap adı ya da yazar ara..."
-        value={aranan}
-        onChange={(olay) => setAranan(olay.target.value)}
-      />
-      <button onClick={() => setAranan("")}>Temizle</button>
-      <p>{sonuclar.length} kitap bulundu.</p>
+      <div className="flex gap-2">
+        <input
+          type="text"
+          placeholder="Kitap adı ya da yazar ara..."
+          value={aranan}
+          onChange={(olay) => setAranan(olay.target.value)}
+          className="flex-1 bg-white border border-gray-300 rounded px-3 py-2"
+        />
+        <button
+          onClick={() => setAranan("")}
+          className="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100"
+        >
+          Temizle
+        </button>
+      </div>
+      <p className="my-4 text-sm text-gray-600">{sonuclar.length} kitap bulundu.</p>
       <KitapListesi kitaplar={sonuclar} />
     </section>
   );

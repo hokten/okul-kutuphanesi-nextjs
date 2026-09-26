@@ -1,3 +1,5 @@
+import Bolum from "@/components/Bolum";
+
 const kurallar = [
   "Kitaplar en fazla 15 gün ödünç alınabilir.",
   "Kütüphanede sessiz olunmalıdır.",
@@ -6,13 +8,12 @@ const kurallar = [
 
 export default function Kurallar() {
   return (
-    <section>
-      <h2>Kütüphane Kuralları</h2>
-      <ul>
+    <Bolum baslik="Kütüphane Kuralları">
+      <ul className="list-disc pl-6 space-y-1">
         {kurallar.map((kural) => (
           <li key={kural}>{kural}</li>
         ))}
       </ul>
-    </section>
+    </Bolum>
   );
 }

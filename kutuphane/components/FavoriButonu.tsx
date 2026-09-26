@@ -11,12 +11,12 @@ export default function FavoriButonu({ kitapAdi }: FavoriButonuProps) {
 
   const degistir = () => {
     setFavoriMi(!favoriMi);
-    console.log(`${kitapAdi}: favori mi? ${!favoriMi}`);
   };
 
   return (
     <button
       onClick={degistir}
+      title={`${kitapAdi} kitabını favorilere ekle`}
       className="mt-2 px-3 py-1 rounded border border-yellow-500 text-yellow-700 hover:bg-yellow-50"
     >
       {favoriMi ? "★ Favorilerde" : "☆ Favorilere ekle"}
