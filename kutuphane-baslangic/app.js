@@ -43,3 +43,15 @@ Sayfa : ${sayfaSayisi}
 Durum : ${durum}
 `;
 console.log(bilgiKarti);
+
+// Karşılaştırmalar
+const raftaMi = durum === "rafta";
+const uzunMu = sayfaSayisi > 300;
+
+console.log(`${baslik} rafta mı?`, raftaMi);
+console.log(`${baslik} 300 sayfadan uzun mu?`, uzunMu);
+
+// Ödünç alma kuralı: kitap rafta VE öğrenci üye olmalı
+const uyeMi = true;
+const oduncAlinabilirMi = raftaMi && uyeMi;
+console.log("Ödünç alınabilir mi?", oduncAlinabilirMi);
