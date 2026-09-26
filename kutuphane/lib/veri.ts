@@ -25,6 +25,11 @@ export const onerilenKitaplariGetir = async (yazar: string) => {
   const yanit = await fetch(
     `https://openlibrary.org/search.json?author=${yazar}&limit=6&fields=key,title,author_name,first_publish_year,cover_i`
   );
+
+  if (!yanit.ok) {
+    throw new Error(`Open Library yanıt vermedi. Durum kodu: ${yanit.status}`);
+  }
+
   const veri: AramaSonucu = await yanit.json();
   return veri.docs;
 };
