@@ -2,6 +2,7 @@ import { kitaplar } from "@/data/kitaplar";
 import Karsilama from "@/components/Karsilama";
 import KitapListesi from "@/components/KitapListesi";
 import AramaKutusu from "@/components/AramaKutusu";
+import OkumaSayaci from "@/components/OkumaSayaci";
 import AltBilgi from "@/components/AltBilgi";
 
 const kurallar = [
@@ -28,6 +29,8 @@ export default function Anasayfa() {
             <li key={kitap.id}>{kitap.baslik}</li>
           ))}
         </ul>
+
+        <OkumaSayaci />
 
         <h2>Kütüphane Kuralları</h2>
         <ul>

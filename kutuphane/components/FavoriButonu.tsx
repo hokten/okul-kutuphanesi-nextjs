@@ -1,19 +1,21 @@
 "use client";
 
+import { useState } from "react";
+
 interface FavoriButonuProps {
   kitapAdi: string;
 }
 
 export default function FavoriButonu({ kitapAdi }: FavoriButonuProps) {
-  let favoriMi = false;
+  const [favoriMi, setFavoriMi] = useState(false);
 
-  const favoriyeEkle = () => {
-    favoriMi = true;
-    console.log(`${kitapAdi} favorilere eklendi! favoriMi:`, favoriMi);
+  const degistir = () => {
+    setFavoriMi(!favoriMi);
+    console.log(`${kitapAdi}: favori mi? ${!favoriMi}`);
   };
 
   return (
-    <button onClick={favoriyeEkle}>
+    <button onClick={degistir}>
       {favoriMi ? "★ Favorilerde" : "☆ Favorilere ekle"}
     </button>
   );
