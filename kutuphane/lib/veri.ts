@@ -24,6 +24,14 @@ export const kitapGetir = async (id: number) => {
   return kayit ? kitabaCevir(kayit) : null;
 };
 
+export const kitapOlustur = async (baslik: string, yazar: string, sayfaSayisi: number) => {
+  const kayit = await prisma.kitap.create({
+    data: { baslik, yazar, sayfaSayisi },
+  });
+
+  return kitabaCevir(kayit);
+};
+
 export interface OneriKitap {
   key: string;
   title: string;
