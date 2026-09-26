@@ -33,3 +33,18 @@ export const onerilenKitaplariGetir = async (yazar: string) => {
   const veri: AramaSonucu = await yanit.json();
   return veri.docs;
 };
+
+export interface Oneri {
+  id: number;
+  ad: string;
+}
+
+const oneriler: Oneri[] = [];
+
+export const onerileriGetir = async () => {
+  return oneriler;
+};
+
+export const oneriEkle = async (ad: string) => {
+  oneriler.push({ id: Date.now(), ad });
+};

@@ -1,34 +1,17 @@
-"use client";
-
-import { useState } from "react";
 import Bolum from "@/components/Bolum";
+import { onerileriGetir } from "@/lib/veri";
+import { oneriGonder } from "@/lib/eylemler";
 
-interface Oneri {
-  id: number;
-  ad: string;
-}
-
-export default function KitapOneri() {
-  const [yeniOneri, setYeniOneri] = useState("");
-  const [oneriler, setOneriler] = useState<Oneri[]>([]);
-
-  const gonder = (olay: React.FormEvent<HTMLFormElement>) => {
-    olay.preventDefault();
-    if (yeniOneri.trim() === "") {
-      return;
-    }
-    setOneriler([...oneriler, { id: Date.now(), ad: yeniOneri.trim() }]);
-    setYeniOneri("");
-  };
+export default async function KitapOneri() {
+  const oneriler = await onerileriGetir();
 
   return (
     <Bolum baslik="Kitap Öner">
-      <form onSubmit={gonder} className="flex gap-2 mb-3">
+      <form action={oneriGonder} className="flex gap-2 mb-3">
         <input
           type="text"
+          name="ad"
           placeholder="Kütüphanede görmek istediğin kitap"
-          value={yeniOneri}
-          onChange={(olay) => setYeniOneri(olay.target.value)}
           className="flex-1 bg-white border border-gray-300 rounded px-3 py-2"
         />
         <button type="submit" className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700">
