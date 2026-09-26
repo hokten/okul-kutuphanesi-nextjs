@@ -1,43 +1,34 @@
 import { kitaplar } from "@/data/kitaplar";
 import Karsilama from "@/components/Karsilama";
+import OneCikanKitaplar from "@/components/OneCikanKitaplar";
+import Istatistikler from "@/components/Istatistikler";
 import KitapArama from "@/components/KitapArama";
 import OkumaSayaci from "@/components/OkumaSayaci";
 import KitapOneri from "@/components/KitapOneri";
+import Kurallar from "@/components/Kurallar";
 import AltBilgi from "@/components/AltBilgi";
-
-const kurallar = [
-  "Kitaplar en fazla 15 gün ödünç alınabilir.",
-  "Kütüphanede sessiz olunmalıdır.",
-  "Kitaplar temiz ve sağlam teslim edilmelidir."
-];
 
 export default function Anasayfa() {
   const raftakiler = kitaplar.filter((kitap) => kitap.durum === "rafta");
+  const oneCikanlar = kitaplar.filter((kitap) => kitap.oneCikan);
 
   return (
     <>
       <main>
-        <Karsilama kutuphaneAdi="Okul Kütüphanesi" kitapSayisi={kitaplar.length} />
+        <Karsilama
+          kutuphaneAdi="Okul Kütüphanesi"
+          kitapSayisi={kitaplar.length}
+          raftaSayisi={raftakiler.length}
+        />
+        <OneCikanKitaplar kitaplar={oneCikanlar} />
+        <Istatistikler kitaplar={kitaplar} />
 
-        <h2>Kitaplarımız</h2>
+        <h2>Bütün Kitaplar</h2>
         <KitapArama kitaplar={kitaplar} />
-
-        <h2>Şu An Raftakiler</h2>
-        <ul>
-          {raftakiler.map((kitap) => (
-            <li key={kitap.id}>{kitap.baslik}</li>
-          ))}
-        </ul>
 
         <OkumaSayaci />
         <KitapOneri />
-
-        <h2>Kütüphane Kuralları</h2>
-        <ul>
-          {kurallar.map((kural) => (
-            <li key={kural}>{kural}</li>
-          ))}
-        </ul>
+        <Kurallar />
       </main>
       <AltBilgi />
     </>
