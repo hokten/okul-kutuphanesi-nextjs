@@ -10,6 +10,15 @@ const gunlukSayfa = 20;
 const uyeMi = true;
 let kitapSayisi = 3;
 
+const kitapAdlari = [
+  "Çalıkuşu",
+  "Kuyucaklı Yusuf",
+  "Saatleri Ayarlama Enstitüsü"
+];
+const yazarlar = ["Reşat Nuri Güntekin", "Sabahattin Ali", "Ahmet Hamdi Tanpınar"];
+const sayfaSayilari = [400, 232, 382];
+const durumlar = ["rafta", "oduncte", "rafta"];
+
 // ===== FONKSİYONLAR =====
 const selamla = () => console.log("Okul Kütüphanesine hoş geldiniz!");
 
@@ -134,3 +143,23 @@ console.log(`Kuyucaklı Yusuf ${grup} bir kitap.`);
 
 console.log(durumMesaji("rafta"));     // Ödünç alınabilir
 console.log(durumMesaji("oduncte"));   // Şu an ödünçte
+
+// Diziler
+console.log(kitapAdlari);
+
+console.log(kitapAdlari[0]);   // Çalıkuşu
+console.log(kitapAdlari[1]);   // Kuyucaklı Yusuf
+console.log(kitapAdlari[2]);   // Saatleri Ayarlama Enstitüsü
+
+console.log(kitapAdlari.length);   // 3
+console.log(`Kütüphanede ${kitapAdlari.length} kitap var.`);
+
+console.log(kitapAdlari[kitapAdlari.length - 1]);   // Saatleri Ayarlama Enstitüsü
+console.log(kitapAdlari[3]);                         // undefined
+
+console.log(kitapAdlari.includes("Çalıkuşu"));   // true
+
+kitapBilgisiYaz(kitapAdlari[1], yazarlar[1], sayfaSayilari[1]);
+// Kuyucaklı Yusuf - Sabahattin Ali (232 sayfa, Kısa)
+console.log(durumMesaji(durumlar[1]));
+// Şu an ödünçte
