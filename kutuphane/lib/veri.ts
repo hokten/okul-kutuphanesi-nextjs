@@ -8,8 +8,8 @@ export const kitaplariGetir = async (aranan: string = "") => {
   const kayitlar = await prisma.kitap.findMany({
     where: {
       OR: [
-        { baslik: { contains: aranan } },
-        { yazar: { contains: aranan } },
+        { baslik: { contains: aranan, mode: "insensitive" } },
+        { yazar: { contains: aranan, mode: "insensitive" } },
       ],
     },
     orderBy: { baslik: "asc" },
