@@ -86,3 +86,49 @@ console.log(mesaj);   // Şu an ödünçte
 
 const rozetSinifi = durum === "oduncte" ? "durum oduncte" : "durum";
 console.log("Rozet sınıfı:", rozetSinifi);
+
+// Fonksiyonlar
+function selamla() {
+  console.log("Okul Kütüphanesine hoş geldiniz!");
+}
+
+selamla();
+selamla();
+selamla();
+
+function adlaSelamla(isim) {
+  console.log(`Merhaba ${isim}, kütüphaneye hoş geldin!`);
+}
+
+adlaSelamla("Ayşe");
+adlaSelamla("Mehmet");
+
+function kitapBilgisiYaz(kitapAdi, kitapYazari, sayfa) {
+  const grup = uzunlukGrubu(sayfa);
+  console.log(`${kitapAdi} - ${kitapYazari} (${sayfa} sayfa, ${grup})`);
+}
+
+kitapBilgisiYaz("Çalıkuşu", "Reşat Nuri Güntekin", 400);
+kitapBilgisiYaz("Kuyucaklı Yusuf", "Sabahattin Ali", 232);
+kitapBilgisiYaz("Saatleri Ayarlama Enstitüsü", "Ahmet Hamdi Tanpınar", 382);
+
+function uzunlukGrubu(sayfa) {
+  if (sayfa < 250) {
+    return "Kısa";
+  } else if (sayfa < 400) {
+    return "Orta";
+  } else {
+    return "Uzun";
+  }
+}
+
+console.log(uzunlukGrubu(400));   // Uzun
+const grup = uzunlukGrubu(232);
+console.log(`Kuyucaklı Yusuf ${grup} bir kitap.`);
+
+function durumMesaji(kitapDurumu) {
+  return kitapDurumu === "rafta" ? "Ödünç alınabilir" : "Şu an ödünçte";
+}
+
+console.log(durumMesaji("rafta"));     // Ödünç alınabilir
+console.log(durumMesaji("oduncte"));   // Şu an ödünçte
