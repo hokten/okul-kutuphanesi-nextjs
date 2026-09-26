@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import Menu from "@/components/Menu";
+import AltBilgi from "@/components/AltBilgi";
+import DuyuruCubugu from "@/components/DuyuruCubugu";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,10 +24,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="tr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <DuyuruCubugu />
+        <header>
+          <Link href="/">📚 Okul Kütüphanesi</Link>
+          <Menu />
+        </header>
+        {children}
+        <AltBilgi />
+      </body>
     </html>
   );
 }
