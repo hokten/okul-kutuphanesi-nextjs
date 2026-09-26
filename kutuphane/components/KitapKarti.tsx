@@ -1,15 +1,17 @@
 // components/KitapKarti.tsx
-import { kitaplar } from "@/data/kitaplar";
+import { Kitap } from "@/data/kitaplar";
 
-export default function KitapKarti() {
-  const kitap = kitaplar[0];
+interface KitapKartiProps {
+  kitap: Kitap;
+}
 
+export default function KitapKarti({ kitap }: KitapKartiProps) {
   return (
     <div className="kitap-karti">
-      {/* Kitabın bilgileri */}
       <img src={kitap.kapak} alt={`${kitap.baslik} kitabının kapağı`} />
       <h3>{kitap.baslik}</h3>
       <p>Yazar: {kitap.yazar}</p>
+      <p>{kitap.sayfaSayisi} sayfa</p>
       <p className="durum">{kitap.durum}</p>
     </div>
   );

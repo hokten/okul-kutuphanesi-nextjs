@@ -1,8 +1,12 @@
 // components/AltBilgi.tsx
-export default function AltBilgi() {
+interface AltBilgiProps {
+  yil?: number;
+}
+
+export default function AltBilgi({ yil = 2026 }: AltBilgiProps) {
   return (
     <footer>
-      <p>© 2026 Okul Kütüphanesi</p>
+      <p>© {yil} Okul Kütüphanesi</p>
     </footer>
   );
 }
