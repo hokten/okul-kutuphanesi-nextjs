@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Kitap {
+  id          Int     @id @default(autoincrement())
+  baslik      String
+  yazar       String
+  sayfaSayisi Int
+  durum       String  @default("rafta")
+  kapak       String?
+  oneCikan    Boolean @default(false)
+}
