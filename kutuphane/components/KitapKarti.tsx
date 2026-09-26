@@ -1,5 +1,6 @@
 // components/KitapKarti.tsx
 import Image from "next/image";
+import Link from "next/link";
 import { Kitap } from "@/data/kitaplar";
 import OduncKontrol from "@/components/OduncKontrol";
 import FavoriButonu from "@/components/FavoriButonu";
@@ -24,7 +25,11 @@ export default function KitapKarti({ kitap }: KitapKartiProps) {
           Kapak resmi yok
         </div>
       )}
-      <h3 className="mt-3 text-lg font-bold text-gray-900">{kitap.baslik}</h3>
+      <h3 className="mt-3 text-lg font-bold text-gray-900">
+        <Link href={`/kitaplar/${kitap.id}`} className="hover:text-blue-700 hover:underline">
+          {kitap.baslik}
+        </Link>
+      </h3>
       <p className="text-sm text-gray-600">Yazar: {kitap.yazar}</p>
       <p className="text-sm text-gray-500">{kitap.sayfaSayisi} sayfa</p>
       <OduncKontrol baslangicDurumu={kitap.durum} />
