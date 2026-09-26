@@ -18,7 +18,10 @@ export default function OduncKontrol({ baslangicDurumu }: OduncKontrolProps) {
   return (
     <div>
       <DurumRozeti durum={durum} />
-      <button onClick={degistir}>
+      <button
+        onClick={degistir}
+        className="ml-2 px-3 py-1 rounded bg-blue-600 text-white text-sm hover:bg-blue-700"
+      >
         {durum === "rafta" ? "Ödünç ver" : "İade al"}
       </button>
     </div>

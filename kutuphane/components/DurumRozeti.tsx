@@ -7,16 +7,10 @@ interface DurumRozetiProps {
 
 export default function DurumRozeti({ durum }: DurumRozetiProps) {
   const raftaMi = durum === "rafta";
+  const renk = raftaMi ? "bg-green-600" : "bg-orange-600";
 
   return (
-    <span
-      style={{
-        backgroundColor: raftaMi ? "#16a34a" : "#ea580c",
-        color: "white",
-        padding: "2px 8px",
-        borderRadius: "4px"
-      }}
-    >
+    <span className={`inline-block px-2 py-0.5 rounded text-white text-sm ${renk}`}>
       {raftaMi ? "Rafta" : "Ödünçte"}
     </span>
   );

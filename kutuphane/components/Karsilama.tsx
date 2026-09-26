@@ -8,7 +8,7 @@ interface KarsilamaProps {
 export default function Karsilama({ kutuphaneAdi, kitapSayisi, raftaSayisi }: KarsilamaProps) {
   return (
     <section>
-      <h1>{kutuphaneAdi}</h1>
+      <h1 className="text-3xl font-bold text-blue-900">{kutuphaneAdi}</h1>
       <p>Okumak, yeni dünyalara açılan bir kapıdır. Kapımız herkese açık!</p>
       <p>
         Kütüphanemizde {kitapSayisi} kitap var; bunların {raftaSayisi} tanesi şu an rafta
