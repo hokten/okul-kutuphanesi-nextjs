@@ -1,6 +1,7 @@
 // app/kitaplar/[id]/page.tsx
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { kitaplar } from "@/data/kitaplar";
 import { uzunlukGrubu, okumaSuresi } from "@/lib/yardimcilar";
 import OduncKontrol from "@/components/OduncKontrol";
@@ -24,15 +25,7 @@ export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
   const kitap = kitaplar.find((k) => k.id === Number(id));
 
   if (!kitap) {
-    return (
-      <main>
-        <h1 className="text-2xl font-bold">Kitap bulunamadı</h1>
-        <p className="mt-2">{id} numaralı bir kitap kütüphanemizde yok.</p>
-        <Link href="/kitaplar" className="text-blue-700 hover:underline">
-          ← Bütün kitaplar
-        </Link>
-      </main>
-    );
+    notFound();
   }
 
   return (
