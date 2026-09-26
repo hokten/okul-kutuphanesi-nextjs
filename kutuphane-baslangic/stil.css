@@ -1,0 +1,63 @@
+/* Bütün sayfa */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333333;
+  margin: 0;
+}
+
+/* Üst kısım */
+header {
+  background-color: #1e40af;
+  color: white;
+  padding: 16px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+/* Kitap kartları */
+.kitap-karti {
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+}
+
+.kitap-karti img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.kitaplar {
+  display: flex;
+  gap: 16px;
+}
+
+/* Durum rozeti */
+.durum {
+  display: inline-block;
+  background-color: #16a34a;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.oduncte {
+  background-color: #ea580c;
+}
+
+main {
+  padding: 24px;
+}
+
+footer {
+  text-align: center;
+  color: #777777;
+  padding: 16px;
+}
