@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { kitaplar } from "@/data/kitaplar";
+import { kitaplariGetir } from "@/lib/veri";
 import Karsilama from "@/components/Karsilama";
 import OneCikanKitaplar from "@/components/OneCikanKitaplar";
 import Istatistikler from "@/components/Istatistikler";
 import OkumaSayaci from "@/components/OkumaSayaci";
 
-export default function Anasayfa() {
+export default async function Anasayfa() {
+  const kitaplar = await kitaplariGetir();
   const raftakiler = kitaplar.filter((kitap) => kitap.durum === "rafta");
   const oneCikanlar = kitaplar.filter((kitap) => kitap.oneCikan);
 

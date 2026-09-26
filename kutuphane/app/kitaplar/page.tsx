@@ -1,4 +1,4 @@
-import { kitaplar } from "@/data/kitaplar";
+import { kitaplariGetir } from "@/lib/veri";
 import KitapArama from "@/components/KitapArama";
 import SayfaBasligi from "@/components/SayfaBasligi";
 
@@ -6,7 +6,9 @@ export const metadata = {
   title: "Kitaplar",
 };
 
-export default function KitaplarSayfasi() {
+export default async function KitaplarSayfasi() {
+  const kitaplar = await kitaplariGetir();
+
   return (
     <main>
       <SayfaBasligi>Bütün Kitaplar</SayfaBasligi>

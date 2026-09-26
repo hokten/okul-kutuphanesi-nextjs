@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { kitaplar } from "@/data/kitaplar";
+import { kitapGetir } from "@/lib/veri";
 import { uzunlukGrubu, okumaSuresi } from "@/lib/yardimcilar";
 import OduncKontrol from "@/components/OduncKontrol";
 import FavoriButonu from "@/components/FavoriButonu";
@@ -13,7 +13,7 @@ interface KitapDetayProps {
 
 export async function generateMetadata({ params }: KitapDetayProps) {
   const { id } = await params;
-  const kitap = kitaplar.find((k) => k.id === Number(id));
+  const kitap = await kitapGetir(Number(id));
 
   return {
     title: kitap ? kitap.baslik : "Kitap bulunamadı",
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: KitapDetayProps) {
 
 export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
   const { id } = await params;
-  const kitap = kitaplar.find((k) => k.id === Number(id));
+  const kitap = await kitapGetir(Number(id));
 
   if (!kitap) {
     notFound();
