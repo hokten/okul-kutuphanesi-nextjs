@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { oneriEkle, kitapOlustur } from "@/lib/veri";
+import { oneriEkle, kitapOlustur, kitabiGuncelle } from "@/lib/veri";
 import { kitapFormunuDogrula, KitapFormDurumu } from "@/lib/dogrulama";
 
 export const oneriGonder = async (formData: FormData) => {
@@ -31,4 +31,22 @@ export const kitapEkle = async (
   revalidatePath("/kitaplar");
   revalidatePath("/");
   redirect(`/kitaplar/${kitap.id}`);
+};
+
+export const kitapGuncelle = async (
+  id: number,
+  oncekiDurum: KitapFormDurumu,
+  formData: FormData
+): Promise<KitapFormDurumu> => {
+  const { baslik, yazar, sayfaSayisi, sayfaMetni, hatalar } = kitapFormunuDogrula(formData);
+
+  if (Object.keys(hatalar).length > 0) {
+    return { hatalar, degerler: { baslik, yazar, sayfaSayisi: sayfaMetni } };
+  }
+
+  await kitabiGuncelle(id, baslik, yazar, sayfaSayisi);
+
+  revalidatePath("/kitaplar");
+  revalidatePath("/");
+  redirect(`/kitaplar/${id}`);
 };

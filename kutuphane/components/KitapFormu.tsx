@@ -1,17 +1,17 @@
 "use client";
 
 import { useActionState } from "react";
-import { kitapEkle } from "@/lib/eylemler";
 import { KitapFormDurumu } from "@/lib/dogrulama";
 import FormAlani from "@/components/FormAlani";
 
-const baslangic: KitapFormDurumu = {
-  hatalar: {},
-  degerler: { baslik: "", yazar: "", sayfaSayisi: "" },
-};
+interface KitapFormuProps {
+  eylem: (oncekiDurum: KitapFormDurumu, formData: FormData) => Promise<KitapFormDurumu>;
+  baslangic: KitapFormDurumu;
+  dugmeYazisi: string;
+}
 
-export default function KitapFormu() {
-  const [durum, formEylemi, bekliyor] = useActionState(kitapEkle, baslangic);
+export default function KitapFormu({ eylem, baslangic, dugmeYazisi }: KitapFormuProps) {
+  const [durum, formEylemi, bekliyor] = useActionState(eylem, baslangic);
 
   return (
     <form action={formEylemi} noValidate className="mt-6 space-y-4">
@@ -30,7 +30,7 @@ export default function KitapFormu() {
         disabled={bekliyor}
         className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
       >
-        {bekliyor ? "Kaydediliyor..." : "Kaydet"}
+        {bekliyor ? "Kaydediliyor..." : dugmeYazisi}
       </button>
     </form>
   );

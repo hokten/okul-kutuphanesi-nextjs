@@ -50,7 +50,15 @@ export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
         )}
 
         <div className="md:col-span-2">
-          <h1 className="text-3xl font-bold text-blue-900">{kitap.baslik}</h1>
+          <div className="flex items-center justify-between gap-4">
+            <h1 className="text-3xl font-bold text-blue-900">{kitap.baslik}</h1>
+            <Link
+              href={`/kitaplar/${kitap.id}/duzenle`}
+              className="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100"
+            >
+              Düzenle
+            </Link>
+          </div>
           <p className="mt-1 text-lg text-gray-700">{kitap.yazar}</p>
 
           <ul className="mt-6 space-y-2 text-gray-700">
