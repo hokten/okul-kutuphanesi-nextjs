@@ -16,7 +16,7 @@ export default function OduncKontrol({ baslangicDurumu }: OduncKontrolProps) {
   };
 
   return (
-    <div>
+    <div className="mt-3 flex items-center justify-between">
       <DurumRozeti durum={durum} />
       <button
         onClick={degistir}

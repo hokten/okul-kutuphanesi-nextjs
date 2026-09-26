@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function Menu() {
   return (
-    <nav>
-      <Link href="/">Anasayfa</Link>
-      <Link href="/kitaplar">Kitaplar</Link>
-      <Link href="/hakkimizda">Hakkımızda</Link>
+    <nav className="flex gap-4 text-sm">
+      <Link href="/" className="hover:underline">Anasayfa</Link>
+      <Link href="/kitaplar" className="hover:underline">Kitaplar</Link>
+      <Link href="/hakkimizda" className="hover:underline">Hakkımızda</Link>
     </nav>
   );
 }
