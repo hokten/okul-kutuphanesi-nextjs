@@ -1,11 +1,10 @@
+import Link from "next/link";
 import { kitaplar } from "@/data/kitaplar";
+import Menu from "@/components/Menu";
 import Karsilama from "@/components/Karsilama";
 import OneCikanKitaplar from "@/components/OneCikanKitaplar";
 import Istatistikler from "@/components/Istatistikler";
-import KitapArama from "@/components/KitapArama";
 import OkumaSayaci from "@/components/OkumaSayaci";
-import KitapOneri from "@/components/KitapOneri";
-import Kurallar from "@/components/Kurallar";
 import AltBilgi from "@/components/AltBilgi";
 
 export default function Anasayfa() {
@@ -14,6 +13,7 @@ export default function Anasayfa() {
 
   return (
     <>
+      <Menu />
       <main>
         <Karsilama
           kutuphaneAdi="Okul Kütüphanesi"
@@ -21,14 +21,9 @@ export default function Anasayfa() {
           raftaSayisi={raftakiler.length}
         />
         <OneCikanKitaplar kitaplar={oneCikanlar} />
+        <p><Link href="/kitaplar">Bütün kitapları gör →</Link></p>
         <Istatistikler kitaplar={kitaplar} />
-
-        <h2>Bütün Kitaplar</h2>
-        <KitapArama kitaplar={kitaplar} />
-
         <OkumaSayaci />
-        <KitapOneri />
-        <Kurallar />
       </main>
       <AltBilgi />
     </>
