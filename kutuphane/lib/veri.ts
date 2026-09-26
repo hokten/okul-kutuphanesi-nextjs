@@ -1,16 +1,27 @@
-import { kitaplar, Durum } from "@/data/kitaplar";
+import { Durum } from "@/data/kitaplar";
 import { prisma } from "@/lib/prisma";
+import type { Kitap as KitapKaydi } from "@/lib/generated/prisma/client";
+
+const kitabaCevir = (kayit: KitapKaydi) => ({ ...kayit, durum: kayit.durum as Durum });
 
 export const kitaplariGetir = async () => {
   const kayitlar = await prisma.kitap.findMany({
     orderBy: { baslik: "asc" },
   });
 
-  return kayitlar.map((kayit) => ({ ...kayit, durum: kayit.durum as Durum }));
+  return kayitlar.map(kitabaCevir);
 };
 
 export const kitapGetir = async (id: number) => {
-  return kitaplar.find((kitap) => kitap.id === id);
+  if (!Number.isInteger(id)) {
+    return null;
+  }
+
+  const kayit = await prisma.kitap.findUnique({
+    where: { id },
+  });
+
+  return kayit ? kitabaCevir(kayit) : null;
 };
 
 export interface OneriKitap {
