@@ -7,6 +7,10 @@ interface KitapListesiProps {
 }
 
 export default function KitapListesi({ kitaplar }: KitapListesiProps) {
+  if (kitaplar.length === 0) {
+    return <p>Gösterilecek kitap yok.</p>;
+  }
+
   return (
     <div className="kitaplar">
       {kitaplar.map((kitap) => (

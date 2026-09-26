@@ -1,5 +1,6 @@
 // components/KitapKarti.tsx
 import { Kitap } from "@/data/kitaplar";
+import DurumRozeti from "@/components/DurumRozeti";
 
 interface KitapKartiProps {
   kitap: Kitap;
@@ -8,11 +9,16 @@ interface KitapKartiProps {
 export default function KitapKarti({ kitap }: KitapKartiProps) {
   return (
     <div className="kitap-karti">
-      <img src={kitap.kapak} alt={`${kitap.baslik} kitabının kapağı`} />
+      {kitap.kapak ? (
+        <img src={kitap.kapak} alt={`${kitap.baslik} kitabının kapağı`} />
+      ) : (
+        <div className="kapak-yok">Kapak resmi yok</div>
+      )}
       <h3>{kitap.baslik}</h3>
       <p>Yazar: {kitap.yazar}</p>
       <p>{kitap.sayfaSayisi} sayfa</p>
-      <p className="durum">{kitap.durum}</p>
+      <DurumRozeti durum={kitap.durum} />
+      {kitap.durum === "oduncte" && <p>İade bekleniyor.</p>}
     </div>
   );
 }
