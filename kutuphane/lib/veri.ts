@@ -4,8 +4,14 @@ import type { Kitap as KitapKaydi } from "@/lib/generated/prisma/client";
 
 const kitabaCevir = (kayit: KitapKaydi) => ({ ...kayit, durum: kayit.durum as Durum });
 
-export const kitaplariGetir = async () => {
+export const kitaplariGetir = async (aranan: string = "") => {
   const kayitlar = await prisma.kitap.findMany({
+    where: {
+      OR: [
+        { baslik: { contains: aranan } },
+        { yazar: { contains: aranan } },
+      ],
+    },
     orderBy: { baslik: "asc" },
   });
 
