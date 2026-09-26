@@ -1,3 +1,4 @@
-import { kitaplar } from "./veriler.js";
+import { kitaplariGetir, kutuphaneAdi } from "./veriler.js";
 
-console.log(`Kütüphanemizde ${kitaplar.length} kitap var.`);
+const kitaplar = await kitaplariGetir();
+console.log(`${kutuphaneAdi}'nde ${kitaplar.length} kitap var.`);

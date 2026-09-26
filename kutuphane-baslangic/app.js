@@ -1,8 +1,10 @@
 // ===== İÇE AKTARMALAR =====
-import { kitaplar } from "./veriler.js";
+import { kitaplariGetir } from "./veriler.js";
 import { durumMesaji, kitapBilgisi } from "./yardimcilar.js";
 
 // ===== KULLANIM =====
+const kitaplar = await kitaplariGetir();
+
 console.table(kitaplar);
 console.log(kitaplar.map(kitapBilgisi));
 
