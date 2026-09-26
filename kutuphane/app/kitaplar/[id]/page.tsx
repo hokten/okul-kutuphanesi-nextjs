@@ -6,6 +6,7 @@ import { kitapGetir } from "@/lib/veri";
 import { uzunlukGrubu, okumaSuresi } from "@/lib/yardimcilar";
 import OduncKontrol from "@/components/OduncKontrol";
 import FavoriButonu from "@/components/FavoriButonu";
+import SilButonu from "@/components/SilButonu";
 
 interface KitapDetayProps {
   params: Promise<{ id: string }>;
@@ -52,12 +53,15 @@ export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
         <div className="md:col-span-2">
           <div className="flex items-center justify-between gap-4">
             <h1 className="text-3xl font-bold text-blue-900">{kitap.baslik}</h1>
-            <Link
-              href={`/kitaplar/${kitap.id}/duzenle`}
-              className="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100"
-            >
-              Düzenle
-            </Link>
+            <div className="flex gap-2">
+              <Link
+                href={`/kitaplar/${kitap.id}/duzenle`}
+                className="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100"
+              >
+                Düzenle
+              </Link>
+              <SilButonu id={kitap.id} baslik={kitap.baslik} />
+            </div>
           </div>
           <p className="mt-1 text-lg text-gray-700">{kitap.yazar}</p>
 

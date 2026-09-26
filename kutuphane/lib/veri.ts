@@ -41,6 +41,12 @@ export const kitabiGuncelle = async (id: number, baslik: string, yazar: string, 
   return kitabaCevir(kayit);
 };
 
+export const kitabiSil = async (id: number) => {
+  await prisma.kitap.deleteMany({
+    where: { id },
+  });
+};
+
 export interface OneriKitap {
   key: string;
   title: string;
