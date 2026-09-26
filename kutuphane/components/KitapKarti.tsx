@@ -1,6 +1,7 @@
 // components/KitapKarti.tsx
 import { Kitap } from "@/data/kitaplar";
 import DurumRozeti from "@/components/DurumRozeti";
+import FavoriButonu from "@/components/FavoriButonu";
 
 interface KitapKartiProps {
   kitap: Kitap;
@@ -19,6 +20,7 @@ export default function KitapKarti({ kitap }: KitapKartiProps) {
       <p>{kitap.sayfaSayisi} sayfa</p>
       <DurumRozeti durum={kitap.durum} />
       {kitap.durum === "oduncte" && <p>İade bekleniyor.</p>}
+      <FavoriButonu kitapAdi={kitap.baslik} />
     </div>
   );
 }

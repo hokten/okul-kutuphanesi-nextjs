@@ -1,6 +1,7 @@
 import { kitaplar } from "@/data/kitaplar";
 import Karsilama from "@/components/Karsilama";
 import KitapListesi from "@/components/KitapListesi";
+import AramaKutusu from "@/components/AramaKutusu";
 import AltBilgi from "@/components/AltBilgi";
 
 const kurallar = [
@@ -18,6 +19,7 @@ export default function Anasayfa() {
         <Karsilama kutuphaneAdi="Okul Kütüphanesi" kitapSayisi={kitaplar.length} />
 
         <h2>Kitaplarımız</h2>
+        <AramaKutusu />
         <KitapListesi kitaplar={kitaplar} />
 
         <h2>Şu An Raftakiler</h2>
