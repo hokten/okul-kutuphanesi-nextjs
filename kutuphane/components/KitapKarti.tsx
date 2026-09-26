@@ -1,4 +1,5 @@
 // components/KitapKarti.tsx
+import Image from "next/image";
 import { Kitap } from "@/data/kitaplar";
 import OduncKontrol from "@/components/OduncKontrol";
 import FavoriButonu from "@/components/FavoriButonu";
@@ -11,9 +12,11 @@ export default function KitapKarti({ kitap }: KitapKartiProps) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
       {kitap.kapak ? (
-        <img
+        <Image
           src={kitap.kapak}
           alt={`${kitap.baslik} kitabının kapağı`}
+          width={300}
+          height={450}
           className="w-full h-48 object-cover rounded"
         />
       ) : (

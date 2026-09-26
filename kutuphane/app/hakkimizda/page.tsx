@@ -3,6 +3,10 @@ import Kurallar from "@/components/Kurallar";
 import KitapOneri from "@/components/KitapOneri";
 import Bolum from "@/components/Bolum";
 
+export const metadata = {
+  title: "Hakkımızda",
+};
+
 export default function HakkimizdaSayfasi() {
   return (
     <main>
