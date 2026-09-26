@@ -7,7 +7,7 @@ export interface Kitap {
   yazar: string;
   sayfaSayisi: number;
   durum: Durum;
-  kapak?: string;
+  kapak?: string | null;
   oneCikan?: boolean;
 }
 

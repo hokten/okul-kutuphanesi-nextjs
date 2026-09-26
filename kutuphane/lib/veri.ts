@@ -1,7 +1,12 @@
-import { kitaplar } from "@/data/kitaplar";
+import { kitaplar, Durum } from "@/data/kitaplar";
+import { prisma } from "@/lib/prisma";
 
 export const kitaplariGetir = async () => {
-  return kitaplar;
+  const kayitlar = await prisma.kitap.findMany({
+    orderBy: { baslik: "asc" },
+  });
+
+  return kayitlar.map((kayit) => ({ ...kayit, durum: kayit.durum as Durum }));
 };
 
 export const kitapGetir = async (id: number) => {
