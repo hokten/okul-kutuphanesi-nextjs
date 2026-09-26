@@ -1,10 +1,43 @@
 // Okul Kütüphanesi: ilk JavaScript dosyamız
 
+// ===== VERİLER =====
 const baslik = "Çalıkuşu";
 const yazar = "Reşat Nuri Güntekin";
 const sayfaSayisi = 400;
 let durum = "rafta";
+const resimliMi = false;
+const gunlukSayfa = 20;
+const uyeMi = true;
+let kitapSayisi = 3;
 
+// ===== FONKSİYONLAR =====
+const selamla = () => console.log("Okul Kütüphanesine hoş geldiniz!");
+
+const adlaSelamla = (isim) => {
+  console.log(`Merhaba ${isim}, kütüphaneye hoş geldin!`);
+};
+
+const uzunlukGrubu = (sayfa) => {
+  if (sayfa < 250) {
+    return "Kısa";
+  } else if (sayfa < 400) {
+    return "Orta";
+  } else {
+    return "Uzun";
+  }
+};
+
+const durumMesaji = (kitapDurumu) =>
+  kitapDurumu === "rafta" ? "Ödünç alınabilir" : "Şu an ödünçte";
+
+const okumaSuresi = (sayfa, gunlukSayfa) => sayfa / gunlukSayfa;
+
+const kitapBilgisiYaz = (kitapAdi, kitapYazari, sayfa) => {
+  const grup = uzunlukGrubu(sayfa);
+  console.log(`${kitapAdi} - ${kitapYazari} (${sayfa} sayfa, ${grup})`);
+};
+
+// ===== KULLANIM =====
 console.log("Kitap bilgileri:");
 console.log(baslik);
 console.log(yazar);
@@ -15,19 +48,16 @@ console.log(durum);
 durum = "oduncte";
 console.log("Yeni durum:", durum);
 
-let kitapSayisi = 3;
 console.log("Kitap sayısı:", kitapSayisi);
 
 // Kütüphaneye yeni bir kitap geldi
 kitapSayisi = kitapSayisi + 1;
 console.log("Kitap sayısı:", kitapSayisi);
 
-const resimliMi = false;
 console.log(typeof baslik);       // string
 console.log(typeof sayfaSayisi);  // number
 console.log(typeof resimliMi);    // boolean
 
-const gunlukSayfa = 20;
 const gunSayisi = sayfaSayisi / gunlukSayfa;
 console.log("Kitap kaç günde biter?", gunSayisi);  // 20
 
@@ -52,7 +82,6 @@ console.log(`${baslik} rafta mı?`, raftaMi);
 console.log(`${baslik} 300 sayfadan uzun mu?`, uzunMu);
 
 // Ödünç alma kuralı: kitap rafta VE öğrenci üye olmalı
-const uyeMi = true;
 const oduncAlinabilirMi = raftaMi && uyeMi;
 console.log("Ödünç alınabilir mi?", oduncAlinabilirMi);
 
@@ -87,48 +116,21 @@ console.log(mesaj);   // Şu an ödünçte
 const rozetSinifi = durum === "oduncte" ? "durum oduncte" : "durum";
 console.log("Rozet sınıfı:", rozetSinifi);
 
-// Fonksiyonlar
-function selamla() {
-  console.log("Okul Kütüphanesine hoş geldiniz!");
-}
-
+// Fonksiyon çağrıları
 selamla();
 selamla();
 selamla();
-
-function adlaSelamla(isim) {
-  console.log(`Merhaba ${isim}, kütüphaneye hoş geldin!`);
-}
 
 adlaSelamla("Ayşe");
 adlaSelamla("Mehmet");
-
-function kitapBilgisiYaz(kitapAdi, kitapYazari, sayfa) {
-  const grup = uzunlukGrubu(sayfa);
-  console.log(`${kitapAdi} - ${kitapYazari} (${sayfa} sayfa, ${grup})`);
-}
 
 kitapBilgisiYaz("Çalıkuşu", "Reşat Nuri Güntekin", 400);
 kitapBilgisiYaz("Kuyucaklı Yusuf", "Sabahattin Ali", 232);
 kitapBilgisiYaz("Saatleri Ayarlama Enstitüsü", "Ahmet Hamdi Tanpınar", 382);
 
-function uzunlukGrubu(sayfa) {
-  if (sayfa < 250) {
-    return "Kısa";
-  } else if (sayfa < 400) {
-    return "Orta";
-  } else {
-    return "Uzun";
-  }
-}
-
 console.log(uzunlukGrubu(400));   // Uzun
 const grup = uzunlukGrubu(232);
 console.log(`Kuyucaklı Yusuf ${grup} bir kitap.`);
-
-function durumMesaji(kitapDurumu) {
-  return kitapDurumu === "rafta" ? "Ödünç alınabilir" : "Şu an ödünçte";
-}
 
 console.log(durumMesaji("rafta"));     // Ödünç alınabilir
 console.log(durumMesaji("oduncte"));   // Şu an ödünçte
