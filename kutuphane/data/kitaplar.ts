@@ -26,5 +26,6 @@ export const kitaplar: Kitap[] = [
   {
     id: 4, baslik: "Sinekli Bakkal", yazar: "Halide Edib Adıvar",
     sayfaSayisi: 400, durum: "rafta"
-  }
+  },
+  { id: 5, baslik: "Kürk Mantolu Madonna", yazar: "Sabahattin Ali", sayfaSayisi: 160, durum: "oduncte" }
 ];
