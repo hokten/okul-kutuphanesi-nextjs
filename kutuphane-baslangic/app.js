@@ -21,3 +21,25 @@ console.log("Kitap sayısı:", kitapSayisi);
 // Kütüphaneye yeni bir kitap geldi
 kitapSayisi = kitapSayisi + 1;
 console.log("Kitap sayısı:", kitapSayisi);
+
+const resimliMi = false;
+console.log(typeof baslik);       // string
+console.log(typeof sayfaSayisi);  // number
+console.log(typeof resimliMi);    // boolean
+
+const gunlukSayfa = 20;
+const gunSayisi = sayfaSayisi / gunlukSayfa;
+console.log("Kitap kaç günde biter?", gunSayisi);  // 20
+
+// Şablon metinlerle kitap bilgisi
+console.log(`${baslik} - ${yazar}`);
+console.log(`${baslik} kitabı ${sayfaSayisi} sayfadır.`);
+console.log(`Günde ${gunlukSayfa} sayfa okursan ${gunSayisi} günde biter.`);
+
+const bilgiKarti = `
+Kitap : ${baslik}
+Yazar : ${yazar}
+Sayfa : ${sayfaSayisi}
+Durum : ${durum}
+`;
+console.log(bilgiKarti);
