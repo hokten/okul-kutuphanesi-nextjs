@@ -55,3 +55,34 @@ console.log(`${baslik} 300 sayfadan uzun mu?`, uzunMu);
 const uyeMi = true;
 const oduncAlinabilirMi = raftaMi && uyeMi;
 console.log("Ödünç alınabilir mi?", oduncAlinabilirMi);
+
+// Kararlar
+if (durum === "rafta") {
+  console.log(`${baslik}: Ödünç alınabilir`);
+} else {
+  console.log(`${baslik}: Şu an ödünçte`);
+}
+
+// Kitabın uzunluğu
+if (sayfaSayisi < 250) {
+  console.log("Kısa bir kitap");
+} else if (sayfaSayisi < 400) {
+  console.log("Orta uzunlukta bir kitap");
+} else {
+  console.log("Uzun bir kitap");
+}
+
+// Ödünç alma kararı
+if (raftaMi && uyeMi) {
+  console.log("Kitap öğrenciye verilebilir.");
+} else if (!uyeMi) {
+  console.log("Önce kütüphaneye üye olmalısın.");
+} else {
+  console.log("Kitap şu an başka birinde. Sıraya yazılabilirsin.");
+}
+
+const mesaj = raftaMi ? "Ödünç alınabilir" : "Şu an ödünçte";
+console.log(mesaj);   // Şu an ödünçte
+
+const rozetSinifi = durum === "oduncte" ? "durum oduncte" : "durum";
+console.log("Rozet sınıfı:", rozetSinifi);
