@@ -163,3 +163,36 @@ kitapBilgisiYaz(kitapAdlari[1], yazarlar[1], sayfaSayilari[1]);
 // Kuyucaklı Yusuf - Sabahattin Ali (232 sayfa, Kısa)
 console.log(durumMesaji(durumlar[1]));
 // Şu an ödünçte
+
+// map: her elemanı dönüştür
+const buyukAdlar = kitapAdlari.map((ad) => ad.toUpperCase());
+console.log(buyukAdlar);
+// ["ÇALIKUŞU", "KUYUCAKLI YUSUF", "SAATLERI AYARLAMA ENSTITÜSÜ"]
+
+const gruplar = sayfaSayilari.map((sayfa) => uzunlukGrubu(sayfa));
+console.log(gruplar);   // ["Uzun", "Kısa", "Orta"]
+
+const bilgiSatirlari = kitapAdlari.map(
+  (ad, i) => `${ad} - ${yazarlar[i]}`
+);
+console.log(bilgiSatirlari);
+// ["Çalıkuşu - Reşat Nuri Güntekin", "Kuyucaklı Yusuf - Sabahattin Ali", ...]
+
+// filter: uyanları süz
+const uzunSayfalar = sayfaSayilari.filter((sayfa) => sayfa > 300);
+console.log(uzunSayfalar);   // [400, 382]
+
+const raftakiler = kitapAdlari.filter((ad, i) => durumlar[i] === "rafta");
+console.log(`Rafta ${raftakiler.length} kitap var:`, raftakiler);
+// Rafta 2 kitap var: ["Çalıkuşu", "Saatleri Ayarlama Enstitüsü"]
+
+const aranan = "Yusuf";
+const sonuclar = kitapAdlari.filter((ad) => ad.includes(aranan));
+console.log(sonuclar);   // ["Kuyucaklı Yusuf"]
+
+// find: ilk uyanı bul
+const ilkKisa = sayfaSayilari.find((sayfa) => sayfa < 250);
+console.log(ilkKisa);   // 232
+
+const saatKitabi = kitapAdlari.find((ad) => ad.includes("Saat"));
+console.log(saatKitabi);   // Saatleri Ayarlama Enstitüsü
