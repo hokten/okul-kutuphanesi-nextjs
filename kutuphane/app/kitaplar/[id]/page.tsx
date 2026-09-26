@@ -64,6 +64,13 @@ export default async function KitapDetaySayfasi({ params }: KitapDetayProps) {
             </div>
           </div>
           <p className="mt-1 text-lg text-gray-700">{kitap.yazar}</p>
+          {kitap.kategori && (
+            <p className="mt-2">
+              <span className="inline-block px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-sm">
+                {kitap.kategori.ad}
+              </span>
+            </p>
+          )}
 
           <ul className="mt-6 space-y-2 text-gray-700">
             <li>Sayfa sayısı: {kitap.sayfaSayisi} ({uzunlukGrubu(kitap.sayfaSayisi)})</li>

@@ -8,11 +8,19 @@ datasource db {
 }
 
 model Kitap {
-  id          Int     @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   baslik      String
   yazar       String
   sayfaSayisi Int
-  durum       String  @default("rafta")
+  durum       String    @default("rafta")
   kapak       String?
-  oneCikan    Boolean @default(false)
+  oneCikan    Boolean   @default(false)
+  kategoriId  Int?
+  kategori    Kategori? @relation(fields: [kategoriId], references: [id])
+}
+
+model Kategori {
+  id       Int     @id @default(autoincrement())
+  ad       String  @unique
+  kitaplar Kitap[]
 }

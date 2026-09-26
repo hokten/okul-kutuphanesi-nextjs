@@ -19,9 +19,10 @@ export const kitapGetir = async (id: number) => {
 
   const kayit = await prisma.kitap.findUnique({
     where: { id },
+    include: { kategori: true },
   });
 
-  return kayit ? kitabaCevir(kayit) : null;
+  return kayit ? { ...kitabaCevir(kayit), kategori: kayit.kategori } : null;
 };
 
 export const kitapOlustur = async (baslik: string, yazar: string, sayfaSayisi: number) => {
@@ -45,6 +46,18 @@ export const kitabiSil = async (id: number) => {
   await prisma.kitap.deleteMany({
     where: { id },
   });
+};
+
+export const kategorileriGetir = async () => {
+  const kategoriler = await prisma.kategori.findMany({
+    orderBy: { ad: "asc" },
+    include: { kitaplar: { orderBy: { baslik: "asc" } } },
+  });
+
+  return kategoriler.map((kategori) => ({
+    ...kategori,
+    kitaplar: kategori.kitaplar.map(kitabaCevir),
+  }));
 };
 
 export interface OneriKitap {

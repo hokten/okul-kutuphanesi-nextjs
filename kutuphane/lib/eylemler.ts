@@ -48,6 +48,7 @@ export const kitapGuncelle = async (
 
   revalidatePath("/kitaplar");
   revalidatePath("/");
+  revalidatePath("/kategoriler");
   redirect(`/kitaplar/${id}`);
 };
 
@@ -56,5 +57,6 @@ export const kitapSil = async (id: number) => {
 
   revalidatePath("/kitaplar");
   revalidatePath("/");
+  revalidatePath("/kategoriler");
   redirect("/kitaplar");
 };
